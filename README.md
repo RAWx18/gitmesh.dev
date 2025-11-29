@@ -21,6 +21,11 @@ All contribution tracking is managed through the LFDT GitMesh repository.
 The website code itself lives in this repository but is pulled into the LFDT repo as a submodule.
 All reviews, assignments, and governance follow LFDT’s contribution model.
 
+**OR**
+
+Just open an issue at:
+   [https://github.com/alveoli-app/gitmesh.dev](https://github.com/alveoli-app/gitmesh.dev)
+
 ---
 
 ## Development
