@@ -1,0 +1,8 @@
+{
+  "deployment": "Deployment",
+  "integration-framework": "Integration Framework",
+  "local-development": "Local Development",
+  "observability": "Observability",
+  "premium-self-hosted-apps": "Premium Self Hosted Apps",
+  "telemetry": "Telemetry"
+}

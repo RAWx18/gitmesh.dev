@@ -1,0 +1,7 @@
+{
+  "README": "README",
+  "connecting-to-the-cluster": "Connecting To The Cluster",
+  "kubernetes-configuration": "Kubernetes Configuration",
+  "kubernetes-terminology": "Kubernetes Terminology",
+  "useful-kubectl-commands": "Useful Kubectl Commands"
+}

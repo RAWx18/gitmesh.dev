@@ -1,0 +1,6 @@
+# Blog Posts Directory
+
+This directory contains blog posts in MDX format.
+
+File naming convention: YYYY-MM-DD-slug.mdx
+Example: 2024-01-15-getting-started-with-gitmesh.mdx

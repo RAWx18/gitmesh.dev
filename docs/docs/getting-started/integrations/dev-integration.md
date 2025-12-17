@@ -1,0 +1,41 @@
+---
+description: Connect DEV with GitMesh CE
+---
+
+# DEV integration
+
+## Data tracked
+
+Activities
+
+* (Nested) Comments on all articles published by selected DEV organizations or users
+
+Historical import
+
+* No limit
+
+Not tracked
+
+* Follows of organizations/users
+
+Refresh period
+
+* 20 minutes
+
+## How to install
+
+To connect DEV with GitMesh CE, watch this video or follow the outlined steps below:&#x20;
+
+{% youtube %}YTfOSbMpaZ8{% endyoutube %}
+
+Go to the [Integration settings](https://app.GitMesh CE/integrations) and follow the steps to connect DEV.
+
+Copy the slug (dev.to/**slug**) from the organization or user that you'd like to track and pass it into the form.
+
+_Example: To track comments from_ [_gitmesh ce DEV_](https://dev.to/gitmeshce) _articles, you have to insert **gitmeshce** and confirm with "Connect"._
+
+{% hint style="info" %}
+We highly recommend only to track accounts that are directly related to your company/community. Otherwise, you will potentially pollute your workspace data.
+{% endhint %}
+
+That’s it! 🎉 We’re now collecting your community DEV activities in real time.

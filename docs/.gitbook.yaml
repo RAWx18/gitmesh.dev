@@ -1,0 +1,8 @@
+root: ./
+
+​structure:  
+    readme: ./docs/README.md  
+    summary: ./docs/SUMMARY.md​
+
+redirects:  
+    docs/product-docs: docs/getting-started/what-is-gitmesh-ce

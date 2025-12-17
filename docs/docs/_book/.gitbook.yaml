@@ -1,0 +1,67 @@
+root: ./
+
+​structure:  
+    readme: README.md  
+    summary: SUMMARY.md​
+
+redirects:  
+    product-docs: ./README.md
+    core-concepts: ./core-concepts.md
+    integrations: ./getting-started/integrations.md
+    github-integration: ./getting-started/integrations/github-integration.md
+    discord-integration: ./getting-started/integrations/discord-integration.md
+    slack-integration: ./getting-started/integrations/slack-integration.md
+    dev-integration: ./getting-started/integrations/dev-integration.md
+    hacker-news-integration: ./getting-started/integrations/hacker-news-integration.md
+    reddit-integration: ./getting-started/integrations/reddit-integration.md
+    linkedin-integration: ./getting-started/integrations/linkedin-integration.md
+    stack-overflow-integration: ./getting-started/integrations/stack-overflow-integration.md
+    discourse-integration: ./getting-started/integrations/discourse-integration.md
+    zapier-integration: ./getting-started/integrations/zapier-integration.md
+    twitter-integration-via-zapier: ./getting-started/integrations/twitter-integration.md
+    n8n-integration: ./getting-started/integrations/n8n-integration.md
+    hubspot-integration: ./getting-started/integrations/hubspot-integration.md
+    explore-popular-use-cases: ./getting-started/explore-popular-use-cases.md
+    home: ./guides/home.md
+    tasks: ./guides/tasks.md
+    members: ./guides/contacts.md
+    member-profiles: ./guides/contacts/contact-profiles.md
+    merge-members: ./guides/contacts/merge-contacts.md
+    member-views: ./guides/contacts/member-views-filters-and-sorting.md
+    add-members: ./guides/contacts/add-contact.md
+    member-attributes-identities: ./guides/contacts/contact-attributes-and-identities.md
+    member-enrichment: ./guides/contacts/contact-enrichment.md
+    activities: ./guides/activities.md
+    activity-types-and-scores: ./guides/activities/activity-types-and-scores.md
+    activity-views: ./guides/activities/activity-views-filters-and-sorting.md
+    activity-sentiment: ./guides/activities/activity-sentiment.md
+    organizations-1: ./guides/organizations.md
+    organization-profiles: ./guides/organizations/organization-profiles.md
+    organization-views: ./guides/organizations/organization-views-filters-and-sorting.md
+    organization-attributes-identities: ./guides/organizations/organization-attributes-and-identities.md
+    organization-enrichment: ./guides/organizations/organization-enrichment.md
+    reports: ./guides/reports.md
+    default-reports: ./guides/reports/default-reports.md
+    custom-reports: ./guides/reports/custom-reports.md
+    automations-1: ./guides/automations.md
+    webhooks: ./guides/automations/webhooks.md
+    slack-notifications: ./guides/automations/slack-notifications.md
+    signals: ./guides/app-signals.md
+    getting-started-with-self-hosting: ./technical-docs/local-development.md
+    services: ./technical-docs/local-development.md
+    configuration-1: ./technical-docs/local-development.md
+    dependencies: ./technical-docs/local-development.md
+    deployment: ./technical-docs/deployment.md
+    docker-compose-single-machine-development: ./technical-docs/deployment.md
+    docker-compose-single-machine-development-with-docker-images: ./technical-docs/deployment.md
+    kubernetes: ./technical-docs/kubernetes.md
+    self-hosting: ./technical-docs/self-hosted-integrations.md
+    self-hosted-github: ./technical-docs/self-hosted-integrations.md
+    self-hosted-twitter-integration: ./technical-docs/self-hosted-integrations.md
+    self-hosted-discord-integration: ./technical-docs/self-hosted-integrations.md
+    the-slack-integration: ./technical-docs/self-hosted-integrations.md
+    self-hosted-reddit-integration: ./technical-docs/self-hosted-integrations.md
+    premium-self-hosted-apps: ./technical-docs/premium-self-hosted-apps.md
+    telemetry: ./technical-docs/telemetry.md
+    integration-framework: ./technical-docs/integration-framework.md
+    getting-started-with-gitmesh-dev-api: ./technical-docs/local-development.md

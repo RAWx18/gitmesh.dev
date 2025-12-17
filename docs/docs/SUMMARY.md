@@ -1,0 +1,77 @@
+# Table of contents
+
+* [🏠 Home](https://app.gitbook.com/o/5adXkyvCwhufPOE1iqxE/s/e9xgQyzZ2aRPuQwkXEqi/)
+
+## Getting started
+
+* [👋 What is gitmesh ce?](README.md)
+* [⭐ Core concepts](getting-started/core-concepts.md)
+* [🥳 Getting set up](getting-started/getting-set-up.md)
+* [🔌 Integrations](getting-started/integrations/README.md)
+  * [GitHub integration](getting-started/integrations/github-integration.md)
+  * [Discord integration](getting-started/integrations/discord-integration.md)
+  * [Slack integration](getting-started/integrations/slack-integration.md)
+  * [DEV integration](getting-started/integrations/dev-integration.md)
+  * [Hacker News integration](getting-started/integrations/hacker-news-integration.md)
+  * [Reddit integration](getting-started/integrations/reddit-integration.md)
+  * [LinkedIn integration](getting-started/integrations/linkedin-integration.md)
+  * [Stack Overflow integration](getting-started/integrations/stack-overflow-integration.md)
+  * [Zapier Integration](getting-started/integrations/zapier-integration.md)
+  * [Twitter integration](getting-started/integrations/twitter-integration.md)
+  * [Discourse integration](getting-started/integrations/discourse-integration.md)
+  * [n8n integration](getting-started/integrations/n8n-integration.md)
+  * [HubSpot integration](getting-started/integrations/hubspot-integration.md)
+* [🗺 Explore popular use cases](getting-started/explore-popular-use-cases.md)
+
+## Guides
+
+* [🏚 Home](guides/home.md)
+* [✅ Tasks](guides/tasks.md)
+* [🧑🤝🧑 Contacts](guides/contacts/README.md)
+  * [Contact profiles](guides/contacts/contact-profiles.md)
+  * [Merge contacts](guides/contacts/merge-contacts.md)
+  * [Contact views, filters & sorting](guides/contacts/member-views-filters-and-sorting.md)
+  * [Add contact](guides/contacts/add-contact.md)
+  * [Contact attributes & identities](guides/contacts/contact-attributes-and-identities.md)
+  * [Contact enrichment](guides/contacts/contact-enrichment.md)
+* [🏃♀ Activities](guides/activities/README.md)
+  * [Activity types and scores](guides/activities/activity-types-and-scores.md)
+  * [Activity views, filters & sorting](guides/activities/activity-views-filters-and-sorting.md)
+  * [Activity sentiment](guides/activities/activity-sentiment.md)
+* [🏙 Organizations](guides/organizations/README.md)
+  * [Organization profiles](guides/organizations/organization-profiles.md)
+  * [Organization views, filters & sorting](guides/organizations/organization-views-filters-and-sorting.md)
+  * [Organization attributes & identities](guides/organizations/organization-attributes-and-identities.md)
+  * [Organization enrichment](guides/organizations/organization-enrichment.md)
+* [📊 Reports](guides/reports/README.md)
+  * [Default Reports](guides/reports/default-reports.md)
+  * [Custom Reports](guides/reports/custom-reports.md)
+* [⚡ Automations](guides/automations/README.md)
+  * [Webhooks](guides/automations/webhooks.md)
+  * [Slack Notifications](guides/automations/slack-notifications.md)
+* [ App: Signals](guides/app-signals.md)
+
+## Technical docs
+
+* [🤘 Self-hosting](technical-docs/self-hosting/README.md)
+  * [book a call.](https://cal.com/reyero/30?date=2024-01-29\&month=2024-01)
+  * [Self-hosted integrations](technical-docs/self-hosting/self-hosted-integrations.md)
+* [👨💻 Local Development](technical-docs/local-development.md)
+* [🚀 Deployment](technical-docs/deployment.md)
+* [🦍 Service framework](technical-docs/service-framework/README.md)
+  * [Consumer walkthrough](technical-docs/service-framework/consumer-walkthrough.md)
+  * [Worker walkthrough](technical-docs/service-framework/worker-walkthrough.md)
+  * [Working with Temporal](technical-docs/service-framework/working-with-temporal.md)
+* [🔌 Integration framework (WIP)](technical-docs/integration-framework.md)
+* [🎯 Observability](technical-docs/observability.md)
+* [🌐 Kubernetes](technical-docs/kubernetes/README.md)
+  * [Kubernetes terminology](technical-docs/kubernetes/kubernetes-terminology.md)
+  * [Connecting to the cluster](technical-docs/kubernetes/connecting-to-the-cluster.md)
+  * [Our Kubernetes Configuration](technical-docs/kubernetes/kubernetes-configuration.md)
+  * [Useful kubectl commands](technical-docs/kubernetes/useful-kubectl-commands.md)
+* [🗝 Premium self-hosted apps](technical-docs/premium-self-hosted-apps.md)
+* [ℹ Telemetry](technical-docs/telemetry.md)
+
+***
+
+* [🔌 API Docs](https://api.gitmesh.ce/)

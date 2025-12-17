@@ -1,0 +1,5 @@
+# 🤘 Self-hosting GitMesh CE
+
+{% hint style="info" %}
+Our self-hosting docs are currently getting an update. In the meantime, to self-host GitMesh CE, please reach out to hello@GitMesh CE or [book a call here](https://cal.com/reyero/30?date=2024-01-29\&month=2024-01) and we will get you onboarded right away.
+{% endhint %}

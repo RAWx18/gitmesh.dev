@@ -1,5 +1,6 @@
 import { FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { LFDTBadge } from "@/components/ui/lfdt-badge"
 import Image from "next/image"
 
 export function ExperienceSection() {
@@ -43,11 +44,13 @@ export function ExperienceSection() {
               GitMesh Community<span className="bg-[#6366F1] text-white px-3 py-1 inline-block">Governance</span>
             </h2>
             <p className="text-gray-400 mb-8 md:mb-10 leading-relaxed text-base md:text-lg">
-              A clear, merit-based contributor structure that guides how our open-source community grows, collaborates, and maintains the project under the Linux Foundation Decentralized Trust.
+              A clear, merit-based contributor structure that guides how our open-source community grows, collaborates, and maintains the project under the <LFDTBadge variant="inline" className="mx-1" />.
             </p>
-            <Button className="bg-white text-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]">
-              <FileText className="w-5 h-5" />
-              See Governance
+            <Button asChild className="bg-white text-black hover:bg-gray-50 rounded-lg py-5 px-8 md:py-[22px] md:px-[62px] text-base md:text-lg font-semibold h-auto w-full sm:w-auto sm:min-w-[240px]">
+              <a href="/documentation/governance">
+                <FileText className="w-5 h-5" />
+                See Governance
+              </a>
             </Button>
           </div>
 

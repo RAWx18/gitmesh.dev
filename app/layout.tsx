@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 
 import "./globals.css"
+import { AuthProvider } from "@/components/providers/auth-provider"
 
 import { Onest, Geist_Mono as V0_Font_Geist_Mono } from "next/font/google"
 
@@ -30,7 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${onest.variable} font-sans antialiased overflow-x-hidden`}>{children}</body>
+      <body className={`${onest.variable} font-sans antialiased overflow-x-hidden`}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </body>
     </html>
   )
 }

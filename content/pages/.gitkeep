@@ -1,0 +1,6 @@
+# Static Pages Directory
+
+This directory contains static pages in MDX format.
+
+File naming convention: slug.mdx
+Example: about.mdx, governance.mdx

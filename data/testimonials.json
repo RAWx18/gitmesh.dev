@@ -1,0 +1,56 @@
+[
+  {
+    "quote": "GitMesh's branch-level AI feels like having an expert developer by your side on every contribution. It's one of those tools that just makes sense.",
+    "author": "Barbara Muscara",
+    "role": "AIFAQ",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "GitMesh helps open-source projects grow faster by connecting the right people and building stronger communities through smart contributor matching.",
+    "author": "Peter Chmiel",
+    "role": "Founder's Institute",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "The branch-level intelligence gives genuinely useful, in-context AI support. It's a real boost for any developer.",
+    "author": "Alfonso Govela",
+    "role": "Learning Tokens",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "I love the concept. GitMesh tackles real collaboration problems and makes workflows run smoothly. Exactly what we needed.",
+    "author": "Jessica Gonzalez",
+    "role": "Hiero",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "GitMesh's intelligent insights have made collaboration across distributed teams so much smoother. It's a real game-changer for large open-source ecosystems.",
+    "author": "Joydeep Tripathy",
+    "role": "Intel",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "The AI insights help us prioritize issues and match contributors to the right tasks without any extra effort.",
+    "author": "Abhinav Sharma",
+    "role": "KRKN",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "This is exactly what open source has been missing. GitMesh makes contributing and managing projects feel effortless.",
+    "author": "Gianluca Capuzzi",
+    "role": "LFDT",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "GitMesh looks great! I can see it helping bridge the gap between project dev and comms, which would be huge for advocacy.",
+    "author": "Benjamin Thomas",
+    "role": "The Linux Foundation",
+    "avatar": "/placeholder-user.jpg"
+  },
+  {
+    "quote": "I tested GitMesh while contributing to Jaeger — honestly, it was insanely helpful. This product deserves real support.",
+    "author": "Mehul Gautam",
+    "role": "CNCF",
+    "avatar": "/placeholder-user.jpg"
+  }
+]

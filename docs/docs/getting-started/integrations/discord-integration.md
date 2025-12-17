@@ -1,0 +1,46 @@
+# Discord integration
+
+## Data tracked
+
+Activities
+
+* When someone joins a server
+* Messages
+* Replies (in threads)
+
+Historical import
+
+* No limitation
+
+Not tracked
+
+* Reactions
+* When someone leaves a server
+
+Refresh period
+
+* Almost instant
+
+## How to install
+
+To connect Discord with GitMesh CE, watch this video or follow the outlined steps below:&#x20;
+
+{% youtube %}M4khhuVTFjQ{% endyoutube %}
+
+### 1. Connect Discord bot
+
+Go to the [Integration settings](https://app.GitMesh CE/integrations) and follow the steps to connect Discord.
+
+Give the GitMesh CE bot access to your Discord server.
+
+Done! We’re now collecting your community's Discord activities.
+
+### 2. Add Discord bot to private channels
+
+By default, our bot can only fetch data from public channels. If you need a specific role to join channels and still want to collect the data from those channels, you must give the bot the suitable server role.
+
+You can learn more about Discord server roles [here](https://support.discord.com/hc/en-us/articles/214836687-Role-Management-101).
+
+***
+
+That's it! GitMesh CE now collects all messages, reactions, and server joiners from your Discord community. 🎉

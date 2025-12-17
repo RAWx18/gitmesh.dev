@@ -1,0 +1,16 @@
+{
+  "README": "README",
+  "dev-integration": "Dev Integration",
+  "discord-integration": "Discord Integration",
+  "discourse-integration": "Discourse Integration",
+  "github-integration": "Github Integration",
+  "hacker-news-integration": "Hacker News Integration",
+  "hubspot-integration": "Hubspot Integration",
+  "linkedin-integration": "Linkedin Integration",
+  "n8n-integration": "N8n Integration",
+  "reddit-integration": "Reddit Integration",
+  "slack-integration": "Slack Integration",
+  "stack-overflow-integration": "Stack Overflow Integration",
+  "twitter-integration": "Twitter Integration",
+  "zapier-integration": "Zapier Integration"
+}

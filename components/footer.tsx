@@ -1,6 +1,6 @@
 import { Youtube, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { NewsletterSignup } from "@/components/newsletter-signup"
 import Image from "next/image"
 
 export function Footer() {
@@ -20,21 +20,12 @@ export function Footer() {
                 />
               </div>
 
-              <div className="w-full flex-1 bg-white border-4 border-black rounded-3xl py-4 px-4 md:py-6 md:px-8 flex flex-col md:flex-row items-center gap-4 md:gap-6">
-                <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-xl md:text-2xl font-bold text-black">Subscribe to gitmesh newsletter</h3>
+              <div className="w-full flex-1 bg-white border-4 border-black rounded-3xl py-4 px-4 md:py-6 md:px-8">
+                <div className="text-center mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-black">Subscribe to GitMesh CE Newsletter</h3>
+                  <p className="text-sm text-gray-600 mt-2">Get updates on new features, tutorials, and community news</p>
                 </div>
-
-                <div className="relative w-full md:w-auto md:min-w-[400px] lg:min-w-[480px]">
-                  <Input
-                    type="email"
-                    placeholder="Enter your email address"
-                    className="border-4 border-black rounded-xl px-4 md:px-6 h-14 md:h-16 pr-32 md:pr-44 text-base md:text-lg placeholder:text-gray-500"
-                  />
-                  <Button className="absolute right-2 top-2 bottom-2 bg-black text-white hover:bg-black/90 rounded-[10px] px-6 md:px-10 text-sm md:text-base font-semibold whitespace-nowrap h-auto">
-                    Subscribe
-                  </Button>
-                </div>
+                <NewsletterSignup variant="compact" className="max-w-md mx-auto" />
               </div>
             </div>
           </div>
@@ -54,7 +45,7 @@ export function Footer() {
                 <span className="text-lg md:text-xl font-bold">GitMesh CE</span>
               </div>
               <p className="text-gray-400 mb-6 text-sm leading-relaxed">
-                GitMesh correlates market signals with engineering telemetry to auto-generate ranked backlogs, sprint plans, and work routing - fully synced across your dev stack.
+                GitMesh Community Edition correlates market signals with engineering telemetry to auto-generate ranked backlogs, sprint plans, and work routing — fully synced across your dev stack.
               </p>
               <div className="flex gap-3">
                 <a
@@ -70,64 +61,54 @@ export function Footer() {
               <h3 className="font-bold mb-4">Pages</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="/" className="hover:text-white transition-colors">
                     Home
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
+                  <a href="/about" className="hover:text-white transition-colors">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Contact
+                  <a href="/documentation" className="hover:text-white transition-colors">
+                    Documentation
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Portfolio
+                  <a href="https://github.com/LF-Decentralized-Trust-labs/gitmesh" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    Repository
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Single Project
+                  <a href="https://discord.gg/xXvYkK3yEp" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    Discord
                   </a>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h3 className="font-bold mb-4">Utility Pages</h3>
+              <h3 className="font-bold mb-4">Community</h3>
               <ul className="space-y-2 text-gray-400 text-sm">
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Style Guide
+                  <a href="https://zoom-lfx.platform.linuxfoundation.org/meeting/96608771523?password=211b9c60-b73a-4545-8913-75ef933f9365" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    Weekly Dev Call
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Start Here
+                  <a href="https://x.com/Gitmesh_oss" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    Twitter / X
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    404 Not Found
+                  <a href="https://www.linkedin.com/company/gitmesh" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    LinkedIn
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Password protected
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Licenses
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-white transition-colors">
-                    Changelog
+                  <a href="https://www.youtube.com/@GitMesh" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                    YouTube
                   </a>
                 </li>
               </ul>
@@ -146,19 +127,46 @@ export function Footer() {
             </div>
           </div>
 
-            <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+            <div className="border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-gray-400 text-sm">
             <p>
-              Powered by{" "}
+              GitMesh CE is governed by{" "}
               <a
-              href="https://alveoli.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white underline"
+                href="https://www.lfdecentralizedtrust.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white underline"
               >
-              Alveoli
+                Linux Foundation Decentralized Trust
+              </a>
+              . This website is hosted by{" "}
+              <a
+                href="https://alveoli.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white underline"
+              >
+                Alveoli
               </a>{" "}
-              Engineering Team
+              for community welfare.
             </p>
+            <div className="mt-4 sm:mt-0 flex gap-2">
+              <Button 
+                asChild 
+                variant="ghost" 
+                size="sm"
+                className="text-gray-400 hover:text-white hover:bg-gray-800"
+              >
+                <a href="/admin/diagnostics">Rybbit</a>
+              </Button>
+              <Button 
+                asChild 
+                variant="ghost" 
+                size="sm"
+                className="text-gray-400 hover:text-white hover:bg-gray-800"
+              >
+                <a href="/admin">Super Admin</a>
+              </Button>
+            </div>
             </div>
         </div>
       </div>

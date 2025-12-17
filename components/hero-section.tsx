@@ -1,5 +1,6 @@
 import { Mail, FolderOpen } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { LFDTBadge } from "@/components/ui/lfdt-badge"
 
 export function HeroSection() {
   return (
@@ -7,8 +8,11 @@ export function HeroSection() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
           <h1 className="text-[42px] leading-[50px] md:text-[72px] font-bold md:leading-[85px]">
-            GitMesh <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Community Edition</span>a lab under{" "}
-            <span className="bg-[#2F81F7] text-white px-3 py-1 inline-block">LFDT</span>
+            GitMesh <span className="bg-[#FF6B7A] text-white px-3 py-1 inline-block">Community Edition</span>
+            <br />
+            <span className="text-[32px] md:text-[48px] leading-[40px] md:leading-[60px]">
+              a lab under <LFDTBadge className="mx-2" />
+            </span>
           </h1>
 
           <p className="text-[#393939] text-[16px] md:text-[18px] font-medium leading-[28px] md:leading-[30px] max-w-xl">

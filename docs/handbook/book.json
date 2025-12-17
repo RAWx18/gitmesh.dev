@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "hints",
+    "youtube",
+    "-livereload",
+    "highlight",
+    "search",
+    "lunr",
+    "sharing",
+    "fontsettings",
+    "theme-default"
+  ]
+}
