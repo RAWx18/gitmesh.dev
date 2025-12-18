@@ -6,10 +6,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
- 
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
   
   // Configure redirects for old documentation URLs
