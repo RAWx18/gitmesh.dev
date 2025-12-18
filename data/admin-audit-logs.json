@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "id": "1766081936837-komxrkcle",
+    "action": "USER_SIGNIN",
+    "adminUser": "snehkansagara@gmail.com",
+    "details": "User signed in via Google OAuth",
+    "timestamp": "2025-12-18T18:18:56.837Z",
+    "metadata": {
+      "provider": "google"
+    }
+  },
+  {
+    "id": "1766081888499-rgdpavd44",
+    "action": "USER_SIGNOUT",
+    "adminUser": "snehkansagara@gmail.com",
+    "details": "User signed out",
+    "timestamp": "2025-12-18T18:18:08.498Z"
+  },
+  {
+    "id": "1766080610587-0ap268lrp",
+    "action": "USER_SIGNIN",
+    "adminUser": "snehkansagara@gmail.com",
+    "details": "User signed in via Google OAuth",
+    "timestamp": "2025-12-18T17:56:50.587Z",
+    "metadata": {
+      "provider": "google"
+    }
+  },
+  {
+    "id": "1766080596005-nw1e8rxfv",
+    "action": "USER_SIGNOUT",
+    "adminUser": "snehkansagara@gmail.com",
+    "details": "User signed out",
+    "timestamp": "2025-12-18T17:56:36.004Z"
+  },
+  {
+    "id": "1766080233862-g0s8dwawl",
+    "action": "USER_ADDED",
+    "adminUser": "snehkansagara@gmail.com",
+    "targetUser": "snehkansagara2005@gmail.com",
+    "details": "Added user with role: admin",
+    "timestamp": "2025-12-18T17:50:33.861Z",
+    "metadata": {
+      "role": "admin"
+    }
+  },
+  {
+    "id": "1766078865157-ii2qg5wpi",
+    "action": "USER_SIGNIN",
+    "adminUser": "snehkansagara@gmail.com",
+    "details": "User signed in via Google OAuth",
+    "timestamp": "2025-12-18T17:27:45.156Z",
+    "metadata": {
+      "provider": "google"
+    }
+  }
+]

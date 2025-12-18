@@ -1,11 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/admin-protection'
-import { getAllBlogPosts, createBlogPost } from '@/lib/content-manager'
+import { supabase } from '@/lib/supabase'
 import { generateSlug } from '@/lib/content-parser'
 import { z } from 'zod'
 
-const CreateBlogPostSchema = z.object({
+const CreateContentSchema = z.object({
   title: z.string().min(1, 'Title is required'),
+  type: z.enum(['blog', 'announcement', 'welfare']).default('blog'),
   excerpt: z.string().min(1, 'Excerpt is required'),
   content: z.string().min(1, 'Content is required'),
   author: z.string().min(1, 'Author is required'),
@@ -16,122 +17,137 @@ const CreateBlogPostSchema = z.object({
   sendNewsletter: z.boolean().default(false),
 })
 
-// GET /api/admin/content/blog - List all blog posts
-export async function GET() {
+// GET /api/admin/content/blog - List all content
+export async function GET(request: NextRequest) {
   try {
     await requireAdmin()
-    
-    const posts = await getAllBlogPosts()
-    
+
+    const { searchParams } = new URL(request.url)
+    const type = searchParams.get('type') || 'blog'
+
+    const { data: content, error } = await supabase
+      .from('content')
+      .select('*')
+      .eq('type', type)
+      .order('published_at', { ascending: false })
+
+    if (error) throw error
+
     return NextResponse.json({
       success: true,
-      data: posts.map(post => ({
-        slug: post.slug,
-        title: post.frontmatter.title,
-        excerpt: post.frontmatter.excerpt,
-        author: post.frontmatter.author,
-        publishedAt: post.frontmatter.publishedAt,
-        tags: post.frontmatter.tags,
-        featured: post.frontmatter.featured,
-        newsletter: post.frontmatter.newsletter,
-        filename: post.filename,
-        wordCount: post.content.split(/\s+/).length,
+      data: content.map(item => ({
+        slug: item.slug,
+        title: item.title,
+        type: item.type,
+        excerpt: item.excerpt,
+        author: item.author,
+        publishedAt: item.published_at,
+        tags: item.tags,
+        featured: item.featured,
+        newsletter: item.newsletter,
+        wordCount: item.content.split(/\s+/).length,
       }))
     })
   } catch (error) {
-    console.error('Error fetching blog posts:', error)
+    console.error('Error fetching content:', error)
     return NextResponse.json(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Failed to fetch blog posts' 
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to fetch content'
       },
       { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     )
   }
 }
 
-// POST /api/admin/content/blog - Create new blog post
+// POST /api/admin/content/blog - Create new content
 export async function POST(request: NextRequest) {
   try {
     await requireAdmin()
-    
+
     const body = await request.json()
-    const validatedData = CreateBlogPostSchema.parse(body)
-    
+    const validatedData = CreateContentSchema.parse(body)
+
     // Generate slug from title
     const slug = generateSlug(validatedData.title)
-    
-    const filename = await createBlogPost(
-      slug,
-      {
+
+    const { data, error } = await supabase
+      .from('content')
+      .insert({
+        slug,
+        type: validatedData.type,
         title: validatedData.title,
         excerpt: validatedData.excerpt,
+        content: validatedData.content,
         author: validatedData.author,
-        publishedAt: validatedData.publishedAt,
+        published_at: validatedData.publishedAt,
         tags: validatedData.tags,
         featured: validatedData.featured,
         newsletter: validatedData.newsletter,
-      },
-      validatedData.content
-    )
+      })
+      .select()
+      .single()
+
+    if (error) throw error
 
     let newsletterResult = null
-    
+
     // Send newsletter if requested and newsletter flag is true
     if (validatedData.sendNewsletter && validatedData.newsletter) {
       try {
-        newsletterResult = await sendNewsletterForBlogPost(slug, validatedData)
+        newsletterResult = await sendNewsletterForContent(slug, validatedData)
       } catch (newsletterError) {
         console.error('Newsletter sending failed:', newsletterError)
-        // Don't fail the blog post creation if newsletter fails
+        // Don't fail the content creation if newsletter fails
         newsletterResult = {
           success: false,
           error: newsletterError instanceof Error ? newsletterError.message : 'Newsletter sending failed'
         }
       }
     }
-    
+
     return NextResponse.json({
       success: true,
       data: {
         slug,
-        filename,
-        message: 'Blog post created successfully'
+        message: 'Content created successfully'
       },
       newsletterResult
     })
   } catch (error) {
-    console.error('Error creating blog post:', error)
-    
+    console.error('Error creating content:', error)
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { 
-          success: false, 
+        {
+          success: false,
           error: 'Validation error',
           details: error.errors
         },
         { status: 400 }
       )
     }
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Failed to create blog post' 
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to create content'
       },
       { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     )
   }
 }
 
-async function sendNewsletterForBlogPost(slug: string, postData: any) {
-  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/admin/newsletter/send`, {
+async function sendNewsletterForContent(slug: string, postData: any) {
+  // Use a safer way to get the base URL
+  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+  const response = await fetch(`${baseUrl}/api/admin/newsletter/send`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      subject: `New Blog Post: ${postData.title}`,
+      subject: `New ${postData.type}: ${postData.title}`,
       includePosts: [slug],
       tags: postData.tags,
     }),

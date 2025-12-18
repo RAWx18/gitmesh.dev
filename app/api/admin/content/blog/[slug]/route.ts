@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { requireAdmin } from '@/lib/admin-protection'
-import { getBlogPost, updateBlogPost, deleteBlogPost } from '@/lib/content-manager'
+import { supabase } from '@/lib/supabase'
 import { z } from 'zod'
 
-const UpdateBlogPostSchema = z.object({
+const UpdateContentSchema = z.object({
   title: z.string().min(1, 'Title is required'),
+  type: z.enum(['blog', 'announcement', 'welfare']).default('blog'),
   excerpt: z.string().min(1, 'Excerpt is required'),
   content: z.string().min(1, 'Content is required'),
   author: z.string().min(1, 'Author is required'),
@@ -21,128 +22,138 @@ interface RouteParams {
   }>
 }
 
-// GET /api/admin/content/blog/[slug] - Get single blog post
+// GET /api/admin/content/blog/[slug] - Get single content item
 export async function GET(request: NextRequest, { params }: RouteParams) {
   const { slug } = await params
   try {
     await requireAdmin()
-    
-    const post = await getBlogPost(slug)
-    
-    if (!post) {
+
+    const { data: item, error } = await supabase
+      .from('content')
+      .select('*')
+      .eq('slug', slug)
+      .single()
+
+    if (error || !item) {
       return NextResponse.json(
-        { success: false, error: 'Blog post not found' },
+        { success: false, error: 'Content not found' },
         { status: 404 }
       )
     }
-    
+
     return NextResponse.json({
       success: true,
       data: {
-        slug: post.slug,
-        title: post.frontmatter.title,
-        excerpt: post.frontmatter.excerpt,
-        content: post.content,
-        author: post.frontmatter.author,
-        publishedAt: post.frontmatter.publishedAt,
-        tags: post.frontmatter.tags,
-        featured: post.frontmatter.featured,
-        newsletter: post.frontmatter.newsletter,
-        filename: post.filename,
-        wordCount: post.content.split(/\s+/).length,
+        slug: item.slug,
+        type: item.type,
+        title: item.title,
+        excerpt: item.excerpt,
+        content: item.content,
+        author: item.author,
+        publishedAt: item.published_at,
+        tags: item.tags,
+        featured: item.featured,
+        newsletter: item.newsletter,
+        wordCount: item.content.split(/\s+/).length,
       }
     })
   } catch (error) {
-    console.error('Error fetching blog post:', error)
+    console.error('Error fetching content:', error)
     return NextResponse.json(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Failed to fetch blog post' 
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to fetch content'
       },
       { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     )
   }
 }
 
-// PUT /api/admin/content/blog/[slug] - Update blog post
+// PUT /api/admin/content/blog/[slug] - Update content
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   const { slug } = await params
   try {
     await requireAdmin()
-    
+
     const body = await request.json()
-    const validatedData = UpdateBlogPostSchema.parse(body)
-    
-    await updateBlogPost(
-      slug,
-      {
+    const validatedData = UpdateContentSchema.parse(body)
+
+    const { data, error } = await supabase
+      .from('content')
+      .update({
+        type: validatedData.type,
         title: validatedData.title,
         excerpt: validatedData.excerpt,
+        content: validatedData.content,
         author: validatedData.author,
-        publishedAt: validatedData.publishedAt,
+        published_at: validatedData.publishedAt,
         tags: validatedData.tags,
         featured: validatedData.featured,
         newsletter: validatedData.newsletter,
-      },
-      validatedData.content
-    )
+      })
+      .eq('slug', slug)
+      .select()
+      .single()
+
+    if (error) throw error
 
     let newsletterResult = null
-    
+
     // Send newsletter if requested and newsletter flag is true
     if (validatedData.sendNewsletter && validatedData.newsletter) {
       try {
-        newsletterResult = await sendNewsletterForBlogPost(slug, validatedData)
+        newsletterResult = await sendNewsletterForContent(slug, validatedData)
       } catch (newsletterError) {
         console.error('Newsletter sending failed:', newsletterError)
-        // Don't fail the blog post update if newsletter fails
+        // Don't fail the content update if newsletter fails
         newsletterResult = {
           success: false,
           error: newsletterError instanceof Error ? newsletterError.message : 'Newsletter sending failed'
         }
       }
     }
-    
+
     return NextResponse.json({
       success: true,
       data: {
         slug,
-        message: 'Blog post updated successfully'
+        message: 'Content updated successfully'
       },
       newsletterResult
     })
   } catch (error) {
-    console.error('Error updating blog post:', error)
-    
+    console.error('Error updating content:', error)
+
     if (error instanceof z.ZodError) {
       return NextResponse.json(
-        { 
-          success: false, 
+        {
+          success: false,
           error: 'Validation error',
           details: error.errors
         },
         { status: 400 }
       )
     }
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Failed to update blog post' 
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to update content'
       },
       { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     )
   }
 }
 
-async function sendNewsletterForBlogPost(slug: string, postData: any) {
-  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/admin/newsletter/send`, {
+async function sendNewsletterForContent(slug: string, postData: any) {
+  const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+  const response = await fetch(`${baseUrl}/api/admin/newsletter/send`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      subject: `Updated Blog Post: ${postData.title}`,
+      subject: `Updated ${postData.type}: ${postData.title}`,
       includePosts: [slug],
       tags: postData.tags,
     }),
@@ -156,27 +167,32 @@ async function sendNewsletterForBlogPost(slug: string, postData: any) {
   return await response.json()
 }
 
-// DELETE /api/admin/content/blog/[slug] - Delete blog post
+// DELETE /api/admin/content/blog/[slug] - Delete content
 export async function DELETE(request: NextRequest, { params }: RouteParams) {
   const { slug } = await params
   try {
     await requireAdmin()
-    
-    await deleteBlogPost(slug)
-    
+
+    const { error } = await supabase
+      .from('content')
+      .delete()
+      .eq('slug', slug)
+
+    if (error) throw error
+
     return NextResponse.json({
       success: true,
       data: {
         slug,
-        message: 'Blog post deleted successfully'
+        message: 'Content deleted successfully'
       }
     })
   } catch (error) {
-    console.error('Error deleting blog post:', error)
+    console.error('Error deleting content:', error)
     return NextResponse.json(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Failed to delete blog post' 
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Failed to delete content'
       },
       { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
     )
