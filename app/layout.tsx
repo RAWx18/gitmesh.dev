@@ -4,6 +4,7 @@ import Script from "next/script"
 
 import "./globals.css"
 import { AuthProvider } from "@/components/providers/auth-provider"
+import { Toaster } from "@/components/ui/sonner"
 
 import { Onest, Geist_Mono as V0_Font_Geist_Mono } from "next/font/google"
 
@@ -36,6 +37,7 @@ export default function RootLayout({
         <AuthProvider>
           {children}
         </AuthProvider>
+        <Toaster />
         {process.env.RYBBIT_SITE_ID && (
           <Script
             src="https://app.rybbit.io/api/script.js"

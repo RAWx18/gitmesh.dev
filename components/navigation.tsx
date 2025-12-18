@@ -44,6 +44,7 @@ export function Navigation() {
             <a href="/documentation" className="text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity">
               Docs
             </a>
+
             <details className="relative">
               <summary className="flex items-center gap-1 text-[18px] font-bold leading-[20px] hover:opacity-70 transition-opacity cursor-pointer list-none">
                 Links
@@ -121,6 +122,7 @@ export function Navigation() {
               >
                 Docs
               </a>
+
               
               {/* Mobile Links Section */}
               <div className="py-2">

@@ -1,5 +1,21 @@
 {
-  "maintenance": false,
+  "maintenance": true,
   "featuredPosts": [],
-  "announcementBanner": null
+  "announcementBanner": null,
+  "siteSettings": {
+    "siteName": "GitMesh CE",
+    "siteDescription": "Community Edition - Open-source platform for correlating market signals with engineering telemetry",
+    "contactEmail": "support@gitmesh.dev",
+    "githubRepo": "LF-Decentralized-Trust-labs/gitmesh"
+  },
+  "emailSettings": {
+    "provider": "sendgrid",
+    "fromEmail": "support@gitmesh.dev",
+    "fromName": "GitMesh CE"
+  },
+  "securitySettings": {
+    "requireEmailVerification": true,
+    "sessionTimeout": 24,
+    "maxLoginAttempts": 5
+  }
 }

@@ -194,24 +194,24 @@ export function BlogPostManager() {
               />
             </div>
             
-            <Select value={filterTag} onValueChange={setFilterTag}>
+            <Select value={filterTag || "all"} onValueChange={(value) => setFilterTag(value === "all" ? "" : value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Filter by tag" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All tags</SelectItem>
+                <SelectItem value="all">All tags</SelectItem>
                 {allTags.map(tag => (
                   <SelectItem key={tag} value={tag}>{tag}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
             
-            <Select value={filterAuthor} onValueChange={setFilterAuthor}>
+            <Select value={filterAuthor || "all"} onValueChange={(value) => setFilterAuthor(value === "all" ? "" : value)}>
               <SelectTrigger>
                 <SelectValue placeholder="Filter by author" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All authors</SelectItem>
+                <SelectItem value="all">All authors</SelectItem>
                 {allAuthors.map(author => (
                   <SelectItem key={author} value={author}>{author}</SelectItem>
                 ))}
